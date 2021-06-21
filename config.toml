@@ -1,4 +1,4 @@
-baseURL = "http://aratiod.github.io/simplejam1/"
+baseURL = "https://aratiod.github.io/simplejam1/"
 languageCode = "en-us"
 title = "simplejam1"
 theme = "tale"
