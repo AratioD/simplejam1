@@ -19,7 +19,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "select", options: ["AratioD"]}
+      - {label: "Author", name: "author", widget: "select", options: ["Jaakko Puha", "Jack C4", "Michael Bay"]}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Content", name: "body", widget: "markdown"}
 
@@ -30,5 +30,5 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "select", options: ["AratioD", "pekka"]}
+      - {label: "Author", name: "author", widget: "select", options: ["Minna", "Veera", "Ritva"]}
       - {label: "Date", name: "date", widget: "datetime"}
