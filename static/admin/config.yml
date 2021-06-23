@@ -2,6 +2,7 @@
 #  name: github
 #  repo: AratioD/simplejam1
 
+#this works locally, but not in GH pages
 backend:
   name: git-gateway
   branch: main
