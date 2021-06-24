@@ -13,3 +13,5 @@
 5. go to your web server `your_localhost:xxxx/simplejam1/`
 
 6. Netlify CMS you can find `your_localhost:xxxx/simplejam1/admin`
+
+8. Github Pages URL https://aratiod.github.io/simplejam1/ please note Netlify CMS not working here with Github Authentication.
