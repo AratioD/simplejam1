@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: aratiod/simplejam1
+  repo: AratioD/simplejam1
 
 #this works locally, but not in GH pages
 #backend:
