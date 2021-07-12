@@ -6,7 +6,7 @@
 `git clone git@github.com:AratioD/simplejam1.git`
 
 
-3. `run hugo server -D`
+3. `hugo server -D`
 
 4. `npx netlify-cms-proxy-server`
 
