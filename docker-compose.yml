@@ -1,6 +1,18 @@
-version: "3.8"
+version: '3'
 services:
-  hugo:
-    build: .
+  web_server:
+    restart:  always
+    image: klakegg/hugo:0.83.1
+    command: server
+    volumes:
+      - ".:/src"
     ports:
-      - "8080:80"
+      - "1313:1313"
+#  netlifly_cms:
+#    restart:  always
+#    image: netlify/build:xenial
+#    build: .
+#    ports:
+#      - "80:8081"
+#    volumes:
+#      - ".:/src"
