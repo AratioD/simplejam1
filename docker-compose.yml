@@ -1,18 +1,20 @@
 version: '3'
 services:
   web_server:
-    restart:  always
+    container_name: hugo_server
+#    restart:  always
     image: klakegg/hugo:0.83.1
-    command: server
+    command:
+     - server
+     - hugo version
+     - npm i netlify-cms
     volumes:
       - ".:/src"
     ports:
       - "1313:1313"
 #  netlifly_cms:
-#    restart:  always
-#    image: netlify/build:xenial
+#    container_name: netlifly_cms
+##    restart:  always
 #    build: .
 #    ports:
 #      - "80:8081"
-#    volumes:
-#      - ".:/src"
