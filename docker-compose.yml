@@ -6,13 +6,13 @@ services:
     command:
      - server
     volumes:
-      - ".:/src"
+      - ".:/app"
     ports:
       - "1313:1313"
   netlifly_cms:
     container_name: netlifly_cms
     build: .
     volumes:
-      - ".:/src"
+      - ".:/app"
     ports:
       - "80:8081"
