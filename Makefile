@@ -20,9 +20,9 @@ run:
 	./run -a do_run_hello_world
 
 # TODO
-.PHONY: do_run ## @-> run some function , in this case hello world
-do_run:
-	docker exec -it simplejam1-devops-con ./run -a do_run_hello_world
+.PHONY: do_run ## @-> run the container and show the logs
+do_run: do_create_container
+    docker logs $$(docker ps -aqf "name=simplejam1-devops-con")
 
 .PHONY: do_build_devops_docker_image ## @-> build the devops docker image
 do_build_devops_docker_image:
@@ -32,14 +32,17 @@ do_build_devops_docker_image:
 do_build_devops_docker_image_no_cache:
 	docker build . -t simplejam1-devops-img --no-cache --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) -f src/docker/devops/Dockerfile
 
+# GOTCHA https://stackoverflow.com/a/66592606/65706 !!!
 .PHONY: do_create_container ## @-> create a new container our of the build img
 do_create_container: do_stop_container
-	docker run -d -v $$(pwd):/opt/simplejam1 \
-	-v $$HOME/.aws:/home/appuser/.aws \
-   	-v $$HOME/.ssh:/home/appuser/.ssh \
-		--name simplejam1-devops-con simplejam1-devops-img ;
-	@echo -e to attach run: "\ndocker exec -it simplejam1-devops-con /bin/bash"
-	@echo -e to get help run: "\ndocker exec -it simplejam1-devops-con ./run --help"
+	docker run -d \
+        -v $$(pwd):/opt/simplejam1 \
+        -v $$HOME/.aws:/home/appuser/.aws \
+        -v $$HOME/.ssh:/home/appuser/.ssh \
+        -p 127.0.0.1:1313:1313 \
+		    --name simplejam1-devops-con simplejam1-devops-img ;
+	@echo -e to attach run: "\ndocker exec -it simplejam1-devops-con /usr/bin/hugo server -D"
+	@echo -e to get the logs : "\ndocker logs $$(docker ps -aqf "name=simplejam1-devops-con")"
 
 .PHONY: do_stop_container ## @-> stop the devops running container
 do_stop_container:
