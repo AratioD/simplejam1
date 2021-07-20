@@ -5,7 +5,7 @@
 2. clone git repository in your machine
 `git clone git@github.com:AratioD/simplejam1.git`
 
-
+# Run without a docker
 3. `hugo server -D`
 
 4. `npx netlify-cms-proxy-server`
@@ -15,3 +15,11 @@
 6. Netlify CMS you can find `your_localhost:xxxx/simplejam1/admin`
 
 8. Github Pages URL https://aratiod.github.io/simplejam1/ please note Netlify CMS not working here with Github Authentication.
+
+# Netlify CMS and Hugo demo project
+# Run with the docker
+
+1. `docker-compose up` 
+
+
+
