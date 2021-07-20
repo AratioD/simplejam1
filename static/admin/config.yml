@@ -1,13 +1,8 @@
-#backend:
-#  name: github
-#  repo: AratioD/simplejam1
-
-#this works locally, but not in GH pages
 backend:
   name: git-gateway
-#  branch: ubuntu-docker
+  branch: ubuntu-docker
 
-#local_backend: true
+local_backend: true
 
 media_folder: "static/images/uploads"
 public_folder: "images/uploads"

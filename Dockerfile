@@ -2,9 +2,7 @@ FROM node:latest
 
 RUN apt-get update -y
 
-WORKDIR app
-
-COPY . .
+WORKDIR /src
 
 CMD [ "npx", "netlify-cms-proxy-server", "-y"]
 
