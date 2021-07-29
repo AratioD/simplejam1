@@ -1,3 +1,6 @@
 public/
 .DS_Store
 .idea/
+content/
+node_modules/
+resources/
