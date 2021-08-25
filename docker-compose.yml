@@ -4,11 +4,11 @@ services:
     container_name: hugo_server
     image: klakegg/hugo:0.83.1
     command:
-     - server
+     - server --bind=0.0.0.0 --port 8080
     volumes:
       - ".:/src"
     ports:
-      - "1313:1313"
+      - "8080:8080"
   netlifly_cms:
     container_name: netlifly_cms
     build: .
