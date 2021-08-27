@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+
+local_backend:
+  url: http://localhost:80/api/v1
+
+media_folder: "static/images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "page"
+    label: "Page"
+    folder: "content/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "select", options: ["Jaakko Puha", "Jack C4", "Michael Bay"]}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  - name: "premium"
+    label: "Premium Page"
+    folder: "content/premium"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "select", options: ["Minna", "Veera", "Ritva"]}
+      - {label: "Date", name: "date", widget: "datetime"}

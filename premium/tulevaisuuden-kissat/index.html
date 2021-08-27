@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>tulevaisuuden kissat &middot; simplejam1</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="simplejam1" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">simplejam1</h2>
+				</a>
+				
+<style media="screen">
+
+  .nav {
+    overflow: visible;
+    padding: 0.1rem;
+  }
+
+  #search {
+    float: right;
+    position: relative;
+    bottom: 0.2rem;
+    padding: 0.5rem 1rem;
+    width: 15rem;
+    border: 1px solid lightgray;
+  }
+
+  #search-results {
+    position: absolute;
+    background: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.35);
+    right: 0;
+  }
+
+  #search-results a {
+    display: block;
+    border-bottom: 1px solid lightgray;
+    width: 12rem;
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+
+  #search-results a:hover {
+    background-color: dodgerblue;
+    color: white;
+  }
+
+  #search-results.hide {
+    display: none;
+  }
+
+</style>
+
+<input type="text" id="search" placeholder="Search">
+<div id="search-results" class="hide"></div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+
+  const search = document.getElementById('search')
+  const results = document.getElementById('search-results')
+
+  
+  search.addEventListener( 'focus', e => {
+    results.classList.remove('hide')
+  })
+  search.addEventListener( 'blur', e => {
+    setTimeout( () => {
+      results.classList.add('hide')
+    }, 100)
+  })
+
+  
+  search.addEventListener( 'keyup', function() {
+
+    results.innerHTML = ''
+    if( !this.value ) return
+
+    
+    let lunrResults = window.idx.search( this.value )
+
+    lunrResults.forEach( page => {
+
+      
+      let pageMeta = page.ref.split('||')
+      let pageLink = document.createElement('a')
+      pageLink.innerText = pageMeta[0]
+      pageLink.href = pageMeta[1]
+      results.appendChild( pageLink )
+    })
+  })
+
+  
+  fetch( "" + 'index.json' ).then( res => {
+
+    
+    res.json().then( searchIndex => {
+
+      
+      window.idx = lunr(function () {
+
+        
+        this.ref('meta')
+        this.field('title')
+        this.field('content')
+
+        searchIndex.forEach( page => this.add(page) )
+      })
+
+    })
+  })
+
+</script>
+
+			</div>
+		</nav>
+
+        
+
+<style media="screen">
+
+  #signin {
+    background: #DEDEDE;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
+  #signin input, #signin button {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    outline: none;
+    border: none;
+  }
+
+  #signin button {
+    background: dodgerblue;
+    color: white;
+  }
+
+</style>
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        Minna
+        <br>
+        <span>on&nbsp;</span><time datetime="2021-06-22 13:28:50.327 &#43;0000 UTC">June 22, 2021</time>
+</div>
+		<h1 class="post-title">tulevaisuuden kissat</h1>
+<div class="post-line"></div>
+
+		
+
+		<div class="premium-content">
+
+			<h2 style="text-align:center;">Sign in to view premium content.</h2>
+			<form id="signin">
+				<input type="text" name="username" placeholder="username" value="">
+				<input type="password" name="password" placeholder="password" value="">
+				<button type="submit" name="button">Sign In</button>
+			</form>
+
+		</div>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/premium/kissat-ja-koirat/" class="left arrow">&#8592;</a>
+		<a href="/kissojen-tulevaisuus/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+<script>
+
+	
+	const cfURL = 'https://us-central1-tonal-bloom-269413.cloudfunctions.net/premium-content-loader'
+
+	
+	document.getElementById('signin').addEventListener( 'submit', function(e) {
+
+		
+		e.preventDefault()
+
+		
+		let username = this.querySelector('[name="username"]').value
+		let password = this.querySelector('[name="password"]').value
+
+		
+		fetch( `${cfURL}?username=${username}&password=${password}` ).then( res => {
+
+			
+			if (res.ok) {
+				res.text().then( content => {
+
+					
+					this.innerHTML = content
+				})
+			}
+		})
+
+		return false
+	})
+
+</script>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2021-08-27 06:33:25.336238161 &#43;0000 UTC m=&#43;0.053589605">2021</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

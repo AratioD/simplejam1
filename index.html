@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	<meta name="generator" content="Hugo 0.87.0" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+
+		<title>simplejam1</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="simplejam1" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">simplejam1</h2>
+				</a>
+				
+<style media="screen">
+
+  .nav {
+    overflow: visible;
+    padding: 0.1rem;
+  }
+
+  #search {
+    float: right;
+    position: relative;
+    bottom: 0.2rem;
+    padding: 0.5rem 1rem;
+    width: 15rem;
+    border: 1px solid lightgray;
+  }
+
+  #search-results {
+    position: absolute;
+    background: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.35);
+    right: 0;
+  }
+
+  #search-results a {
+    display: block;
+    border-bottom: 1px solid lightgray;
+    width: 12rem;
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+
+  #search-results a:hover {
+    background-color: dodgerblue;
+    color: white;
+  }
+
+  #search-results.hide {
+    display: none;
+  }
+
+</style>
+
+<input type="text" id="search" placeholder="Search">
+<div id="search-results" class="hide"></div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+
+  const search = document.getElementById('search')
+  const results = document.getElementById('search-results')
+
+  
+  search.addEventListener( 'focus', e => {
+    results.classList.remove('hide')
+  })
+  search.addEventListener( 'blur', e => {
+    setTimeout( () => {
+      results.classList.add('hide')
+    }, 100)
+  })
+
+  
+  search.addEventListener( 'keyup', function() {
+
+    results.innerHTML = ''
+    if( !this.value ) return
+
+    
+    let lunrResults = window.idx.search( this.value )
+
+    lunrResults.forEach( page => {
+
+      
+      let pageMeta = page.ref.split('||')
+      let pageLink = document.createElement('a')
+      pageLink.innerText = pageMeta[0]
+      pageLink.href = pageMeta[1]
+      results.appendChild( pageLink )
+    })
+  })
+
+  
+  fetch( "" + 'index.json' ).then( res => {
+
+    
+    res.json().then( searchIndex => {
+
+      
+      window.idx = lunr(function () {
+
+        
+        this.ref('meta')
+        this.field('title')
+        this.field('content')
+
+        searchIndex.forEach( page => this.add(page) )
+      })
+
+    })
+  })
+
+</script>
+
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+	<div class="catalogue">
+		
+			<a href="/kissa-kissa/" class="catalogue-item">
+    <div>
+        <time datetime="2021-07-12 08:54:37.016 &#43;0000 UTC" class="catalogue-time">July 12, 2021</time>
+        <h1 class="catalogue-title">kissa kissa</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is s
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/loma/" class="catalogue-item">
+    <div>
+        <time datetime="2021-07-12 08:43:11.312 &#43;0000 UTC" class="catalogue-time">July 12, 2021</time>
+        <h1 class="catalogue-title">loma</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is something
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/big-green-egg/" class="catalogue-item">
+    <div>
+        <time datetime="2021-07-12 08:04:31.291 &#43;0000 UTC" class="catalogue-time">July 12, 2021</time>
+        <h1 class="catalogue-title">big green egg</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is the best grill 4ever and ever
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/juhannus-is-good/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-24 06:50:30.673 &#43;0000 UTC" class="catalogue-time">June 24, 2021</time>
+        <h1 class="catalogue-title">juhannus is good</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is something great
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/koirat-tykk%C3%A4%C3%A4-lihasta/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-22 13:36:06.939 &#43;0000 UTC" class="catalogue-time">June 22, 2021</time>
+        <h1 class="catalogue-title">koirat tykkää lihasta</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is something great
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/kissojen-tulevaisuus/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-22 13:29:18.264 &#43;0000 UTC" class="catalogue-time">June 22, 2021</time>
+        <h1 class="catalogue-title">kissojen tulevaisuus</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is kissa
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/premium/tulevaisuuden-kissat/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-22 13:28:50.327 &#43;0000 UTC" class="catalogue-time">June 22, 2021</time>
+        <h1 class="catalogue-title">tulevaisuuden kissat</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/premium/kissat-ja-koirat/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-22 13:23:49.928 &#43;0000 UTC" class="catalogue-time">June 22, 2021</time>
+        <h1 class="catalogue-title">Kissat ja koirat</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/kissa4/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-22 12:37:27.419 &#43;0000 UTC" class="catalogue-time">June 22, 2021</time>
+        <h1 class="catalogue-title">kissa4</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is very important to have this in kissa
+        </p>
+    </div>
+</a>
+
+		
+			<a href="/kissa3/" class="catalogue-item">
+    <div>
+        <time datetime="2021-06-22 12:26:50.472 &#43;0000 UTC" class="catalogue-time">June 22, 2021</time>
+        <h1 class="catalogue-title">kissa3</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            this is important very important
+        </p>
+    </div>
+</a>
+
+		
+	</div>
+
+	<div class="pagination">
+		
+		
+			<a href="/page/2/" class="right arrow">&#8594;</a>
+		
+
+		<span>1</span>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2021-08-27 06:33:25.347735676 &#43;0000 UTC m=&#43;0.065087120">2021</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

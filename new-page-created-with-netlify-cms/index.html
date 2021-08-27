@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>New page created with Netlify CMS &middot; simplejam1</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="simplejam1" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">simplejam1</h2>
+				</a>
+				
+<style media="screen">
+
+  .nav {
+    overflow: visible;
+    padding: 0.1rem;
+  }
+
+  #search {
+    float: right;
+    position: relative;
+    bottom: 0.2rem;
+    padding: 0.5rem 1rem;
+    width: 15rem;
+    border: 1px solid lightgray;
+  }
+
+  #search-results {
+    position: absolute;
+    background: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.35);
+    right: 0;
+  }
+
+  #search-results a {
+    display: block;
+    border-bottom: 1px solid lightgray;
+    width: 12rem;
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+
+  #search-results a:hover {
+    background-color: dodgerblue;
+    color: white;
+  }
+
+  #search-results.hide {
+    display: none;
+  }
+
+</style>
+
+<input type="text" id="search" placeholder="Search">
+<div id="search-results" class="hide"></div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+
+  const search = document.getElementById('search')
+  const results = document.getElementById('search-results')
+
+  
+  search.addEventListener( 'focus', e => {
+    results.classList.remove('hide')
+  })
+  search.addEventListener( 'blur', e => {
+    setTimeout( () => {
+      results.classList.add('hide')
+    }, 100)
+  })
+
+  
+  search.addEventListener( 'keyup', function() {
+
+    results.innerHTML = ''
+    if( !this.value ) return
+
+    
+    let lunrResults = window.idx.search( this.value )
+
+    lunrResults.forEach( page => {
+
+      
+      let pageMeta = page.ref.split('||')
+      let pageLink = document.createElement('a')
+      pageLink.innerText = pageMeta[0]
+      pageLink.href = pageMeta[1]
+      results.appendChild( pageLink )
+    })
+  })
+
+  
+  fetch( "" + 'index.json' ).then( res => {
+
+    
+    res.json().then( searchIndex => {
+
+      
+      window.idx = lunr(function () {
+
+        
+        this.ref('meta')
+        this.field('title')
+        this.field('content')
+
+        searchIndex.forEach( page => this.add(page) )
+      })
+
+    })
+  })
+
+</script>
+
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        Ray Viljoen
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-03-31 14:52:00.247 &#43;0000 UTC">March 31, 2020</time>
+</div>
+		<h1 class="post-title">New page created with Netlify CMS</h1>
+<div class="post-line"></div>
+
+		
+
+		<h3 id="sub-heading">Sub heading</h3>
+<p>Some content for the post.</p>
+
+
+		
+<style media="screen">
+
+  #contact {
+    background: #DEDEDE;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
+  #contact input, #contact textarea {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    outline: none;
+    border: none;
+  }
+
+  #contact button {
+    font-size: 1.25rem;
+    background: dodgerblue;
+    border-radius: 5px;
+    color: white;
+    width: 10rem;
+  }
+
+</style>
+
+<script>
+
+
+function handleContact() {
+
+  let contactForm = document.getElementById('contact')
+  let email = contactForm.elements[0]
+  let message = contactForm.elements[1]
+
+  
+  let formData = {}
+  formData[email.name] = email.value
+  formData[message.name] = message.value
+
+  
+  fetch('http://localhost:2222/', {
+    method: 'post',
+    mode: 'no-cors',
+    body: JSON.stringify(formData)
+  }).then( () => {
+
+    
+    contactForm.innerHTML = '<strong>Message sent!</strong>'
+  })
+
+  
+  return false
+}
+
+</script>
+
+<form id="contact" onsubmit="return handleContact()">
+  <input type="email" name="email" value="" placeholder="Email" required>
+  <textarea name="message" placeholder="Message" rows="8" cols="80"></textarea>
+  <button type="submit" name="button">Send Message</button>
+</form>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/premium/first-premium-page/" class="left arrow">&#8592;</a>
+		<a href="/premium/a-new-premium-page/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2021-08-27 06:33:25.331749577 &#43;0000 UTC m=&#43;0.049101021">2021</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
