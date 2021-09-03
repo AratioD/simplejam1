@@ -9,7 +9,7 @@
 
 4. Please open your web-browser `http://localhost:1313/` and see demo front-end.
 
-5. Please go `localhost:1313/simplejam1/admin` to use Netlify CMS
+5. Please go `http://localhost:1313/admin` to use Netlify CMS
 
 # Changes in the templates
 
